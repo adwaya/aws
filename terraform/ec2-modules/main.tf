@@ -21,13 +21,13 @@ resource "aws_instance" "web" {
 resource "null_resource" "remote-exec" {
 
   provisioner "file" {
-    source      = "script.sh"
+    source      = "/script.sh"
     destination = "/tmp/script.sh"
     connection {
       type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("~/.aws/key.private")
-      host        = "54.93.223.49"
+      user        = var.ssh_user
+      private_key = "${file("~/.aws/key.private")}"
+      host        = "${aws_instance.web.public_ip}"
       timeout     = "1m"
     }
   }
@@ -39,5 +39,12 @@ resource "null_resource" "remote-exec" {
       # "chmod +x /tmp/script.sh",
       # "/tmp/script.sh args",
     ]
+    connection {
+      type        = "ssh"
+      user        = var.ssh_user
+      private_key = "${file("~/.aws/key.private")}"
+      host        = "${aws_instance.web.public_ip}"
+      timeout     = "1m"
+    }
   }
 }
