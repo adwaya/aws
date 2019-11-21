@@ -1,0 +1,8 @@
+- hosts : localhost
+  user : root
+  sudo : yes
+  tasks :
+  - name : Copy script
+    copy : 'src=/home/ubuntu/ChangeInstanceType.py dest=/opt/ChangeInstanceType.py owner=root group=root mode=755'
+  - name : Execute script
+    command : '/usr/bin/python /opt/ChangeInstanceType.py'

@@ -1,0 +1,3 @@
+.terraform.tfstate
+terraform/ec2-modules/.terraform
+terraform/ec2-modules/.terraform.tfstate
