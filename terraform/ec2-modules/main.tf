@@ -25,7 +25,7 @@ resource "null_resource" "remote-exec" {
     destination = "/tmp/script.sh"
     connection {
       type        = "ssh"
-      user        = var.ssh_user
+      user        = "ubuntu"
       private_key = file("~/.aws/key.private")
       host        = "54.93.223.49"
       timeout     = "1m"
