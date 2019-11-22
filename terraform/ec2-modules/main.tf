@@ -21,8 +21,8 @@ resource "aws_instance" "web" {
 resource "null_resource" "remote-exec" {
 
   provisioner "file" {
-    source      = "/script.sh"
-    destination = "/tmp/script.sh"
+    source      = "script.sh"
+    destination = "~/script.sh"
     connection {
       type        = "ssh"
       user        = var.ssh_user
@@ -34,10 +34,8 @@ resource "null_resource" "remote-exec" {
 
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/script.sh",
-      "sudo /tmp/script.sh",
-      # "chmod +x /tmp/script.sh",
-      # "/tmp/script.sh args",
+      "chmod +x ~/script.sh",
+      "sh ~/script.sh",
     ]
     connection {
       type        = "ssh"
