@@ -1,11 +1,8 @@
 #! /bin/sh
 
-echo "Starting Execution"
+echo "Getting IPv4 of the instance...."
 
-sudo apt update
+IPv4=$(curl -s 'http://169.254.169.254/latest/meta-data/local-ipv4')
 
-sudo apt-get -y install nginx-full
+echo The Private IP of the instance is = $IPv4
 
-sudo service nginx start
-
-echo "Completed"

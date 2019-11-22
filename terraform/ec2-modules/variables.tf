@@ -6,5 +6,5 @@ variable "ami_id" {
 
 variable "ssh_user" {
   description = "SSH user name to use for remote exec connections,"
-  default     = "ubuntu"
+  default     = "root"
 }

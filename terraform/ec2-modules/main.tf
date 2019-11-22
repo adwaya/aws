@@ -26,8 +26,8 @@ resource "null_resource" "remote-exec" {
     connection {
       type        = "ssh"
       user        = var.ssh_user
-      private_key = "${file("~/.aws/key.private")}"
-      host        = "${aws_instance.web.public_ip}"
+      private_key = file("~/.aws/key.private")
+      host        = aws_instance.web.public_ip
       timeout     = "1m"
     }
   }
@@ -40,8 +40,8 @@ resource "null_resource" "remote-exec" {
     connection {
       type        = "ssh"
       user        = var.ssh_user
-      private_key = "${file("~/.aws/key.private")}"
-      host        = "${aws_instance.web.public_ip}"
+      private_key = file("~/.aws/key.private")
+      host        = aws_instance.web.public_ip
       timeout     = "1m"
     }
   }
